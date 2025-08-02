@@ -420,31 +420,33 @@ void solveLinearEquation(const std::string& equation) {
 }
 
 int main() {
+    #ifdef _WIN32
+        SetConsoleOutputCP(CP_UTF8);
+    #endif
     auto trim = [](std::string& s) {
         s.erase(s.begin(), std::find_if(s.begin(), s.end(), [](unsigned char ch){ return !std::isspace(ch); }));
         s.erase(std::find_if(s.rbegin(), s.rend(), [](unsigned char ch){ return !std::isspace(ch); }).base(), s.end());
     };
 
     std::cout << R"(
-    _______________________
-    |  _________________  |
-    | | GorgiDev's Calc | |  Welcome to
-    | |_________________| |  GorgiDev's
-    |  ___ ___ ___   ___  |  CLI Calculator
-    | | 7 | 8 | 9 | | + | |
-    | |___|___|___| |___| |  made in C++!
-    | | 4 | 5 | 6 | | - | |
-    | |___|___|___| |___| |
-    | | 1 | 2 | 3 | | x | |
-    | |___|___|___| |___| |
-    | | . | 0 | = | | / | |
-    | |___|___|___| |___| |
-    |_____________________|
+
+  ╔══════════════════════════════════════════════════════════════════════════════════════════╗
+  ║      ██████╗  █████╗ ██╗      ██████╗██╗   ██╗██╗      █████╗ ████████╗ █████╗ ██████╗   ║
+  ║     ██╔════╝ ██╔══██╗██║     ██╔════╝██║   ██║██║     ██╔══██╗╚══██╔══╝██   ██╗██╔══██   ║
+  ║     ██║  ███╗███████║██║     ██║     ██║   ██║██║     ███████║   ██║   ██   ██║████╝     ║
+  ║     ██║   ██║██╔══██║██║     ██║     ██║   ██║██║     ██╔══██║   ██║   ██   ██║██╔╝██╔   ║
+  ║     ╚██████╔╝██║  ██║███████╗╚██████╗╚██████╔╝███████╗██║  ██║   ██║   ║█████║║██║ ██║   ║
+  ║      ╚═════╝ ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝   ╚═╝   ╚═════╝╝╚═╝ ╚═╝   ║
+  ╚══════════════════════════════════════════════════════════════════════════════════════════╝
+
+                            WELCOME TO GorgiDev's CLI CALCULATOR!
+                                       <<<MADE IN C++>>>
+
 
     )" << std::endl;
 
     while (true) {
-        std::cout << "Enter expression to calculate (type 'exit' to quit OR type 'help' for help):\n> ";
+        std::cout << "Enter expression to calculate (type 'help' for help):\n> ";
         std::string expression;
         std::getline(std::cin, expression);
 
